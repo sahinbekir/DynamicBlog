@@ -1,0 +1,46 @@
+Created with Asp.Net Core 6 and SQL Server 18
+
+5 n tier architecture
+Entity Layer 'CLASS'
+Data Access Layer 'CRUD'
+Business Layer 'VALIDATIONS'
+UI-Presentation Layer 'FRONT'
+Core Layer 'CORE'
++++++++++++++++++++++++++++
+API Layer 'API'
+
+1-----------------------------------------------------------
+Class for EntityLayer
+About, Blog, Category, Comment, Contact, Writer
+
+2-----------------------------------------------------------
+other Packet Manager Console use for Migrations $# add-migration migrationname #$ update-database
+Libs for DataAccessLayer       ***IMP: not in only here. Download with NuGet
+entity framework core
+entity framework core design
+entity framework core sqlserver
+entity framework core tools
+
+Class for DataAccessLayer
+Abstract
+Concrete CONTEXT -> Db build and entityclass set Ex.(Class1 set Class1s)
+Repositories
+
+Projects for DataAccessLayer -> EntityLayer
+
+3-----------------------------------------------------------
+Projects for BusinessLayer -> EntityLayer, DataAccessLayer
+
+4-----------------------------------------------------------
+Projects for UI-PresentationLayer (MainProject) -> EntityLayer, DataAccessLayer, BusinessLayer
+Libs for DataAccessLayer       ***IMP: not in only here. Download with NuGet
+entity framework core
+entity framework core design
+entity framework core sqlserver
+entity framework core tools
+
+5-----------------------------------------------------------
+Projects for CoreLayer -> 
+
+6-----------------------------------------------------------
+Projects for ApiLayer -> 
