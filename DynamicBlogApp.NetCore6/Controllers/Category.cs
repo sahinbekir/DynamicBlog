@@ -1,12 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DynamicBlogApp.NetCore6.Controllers
 {
     public class Category : Controller
     {
+        CategoryManager cm = new CategoryManager(new EfCategoriesRepository());
         public IActionResult Index()
         {
-            return View();
+            var values = cm.GetListAll();
+            return View(values);
         }
     }
 }
