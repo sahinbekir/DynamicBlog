@@ -4,6 +4,7 @@ using DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220824154713_migrationwithwriter_debug")]
+    partial class migrationwithwriter_debug
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -219,7 +221,7 @@ namespace DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EntityLayer.Concrete.Writer", "Writer")
+                    b.HasOne("EntityLayer.Concrete.Writer", "Writers")
                         .WithMany("Blogs")
                         .HasForeignKey("WriterID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -227,7 +229,7 @@ namespace DataAccessLayer.Migrations
 
                     b.Navigation("Category");
 
-                    b.Navigation("Writer");
+                    b.Navigation("Writers");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Comment", b =>

@@ -2,7 +2,9 @@
 @model IEnumerable<EntityLayer.Concrete.Comment>
 					<div class="comment-top">
 						<h4>Comments</h4>
-						
+						@if(!Model.Any()){
+							<p>Henüz yorum yok...</p>
+						}
 						@foreach (var item in Model){
 						<div class="media">
 							<img src="~/DynamicBlog/images/t1.jpg" alt="" class="img-fluid" />

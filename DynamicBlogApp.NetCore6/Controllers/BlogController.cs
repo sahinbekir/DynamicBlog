@@ -15,6 +15,7 @@ namespace DynamicBlogApp.NetCore6.Controllers
         public IActionResult BlogDetails(int id)
         {
             ViewBag.i=id;
+            //ViewBag.wi = id;
             var values = bm.GetBlogById(id);
             return View(values);
         }

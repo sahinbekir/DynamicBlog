@@ -1,0 +1,81 @@
+﻿@model EntityLayer.Concrete.Writer
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<section class="main-content-w3layouts-agileits">
+		<div class="container">
+		<!---728x90--->
+
+			<h3 class="tittle">Register Now</h3>
+			<!---728x90--->
+				<div class="inner-sec">
+			<div class="login p-5 bg-light mx-auto mw-100">
+				<!--<form method="post">-->
+					@using(Html.BeginForm("Register", "Register" ,FormMethod.Post)){
+						<div class="form-row">
+								<div class="col-md-6 mb-3">
+										<label for="validationCustom01">First and Last name</label>
+										@Html.TextBoxFor(x=>x.WriterName, new { @class = "form-control"})
+										@Html.ValidationMessageFor(x=>x.WriterName, "", new { @class = "text-danger" })
+									@*<input type="text" class="form-control" id="validationDefault01" name="WriterName" placeholder="" required="">*@
+								</div>
+								<div class="col-md-6 mb-3">
+										<label for="validationCustom02">Email</label>
+										@Html.TextBoxFor(x=>x.WriterEmail, new { @class = "form-control"})
+										@Html.ValidationMessageFor(x=>x.WriterEmail, "", new { @class = "text-danger" })
+								</div>
+						</div>
+						<div class="form-row">
+								<div class="col-md-6 mb-3">
+										<label for="validationCustom01">Writer About</label>
+										@Html.TextBoxFor(x=>x.WriterAbout, new { @class = "form-control"})
+										@Html.ValidationMessageFor(x=>x.WriterAbout, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-md-6 mb-3">
+										<label for="validationCustom02">WriterImage</label>
+										@Html.TextBoxFor(x=>x.WriterImage, new { @class = "form-control"})
+										@Html.ValidationMessageFor(x=>x.WriterImage, "", new { @class = "text-danger" })
+								</div>
+						</div>
+						<div class="form-row">
+							<div class="col-md-6 mb-3">
+										<label for="validationCustom02">WriterStatus</label>
+										@Html.TextBoxFor(x=>x.WriterStatus, new { @class = "form-control"})
+										@Html.ValidationMessageFor(x=>x.WriterStatus, "", new { @class = "text-danger" })
+							</div>
+						</div>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+								
+									<label for="exampleInputPassword1 mb-2">Password</label>
+									@Html.PasswordFor(x=>x.WriterPassword, new { @class = "form-control"})
+									@Html.ValidationMessageFor(x=>x.WriterPassword, "", new { @class = "text-danger" })
+								</div>
+								<div class="form-group col-md-6">
+										<label for="exampleInputPassword2 mb-2">Confirm Password</label>
+										@Html.PasswordFor(x=>x.WriterPassword, new { @class = "form-control"})
+										@Html.ValidationMessageFor(x=>x.WriterPassword, "", new { @class = "text-danger" })
+								</div>
+								
+							</div>
+							
+							<button type="submit" class="btn btn-primary submit mb-4">Register</button>
+								<p>
+									<a href="#" id="btninfo" >By clicking Signup, I agree to your terms</a>
+								</p>
+								}
+						<!--</form>-->
+		
+					</div>
+			</div>
+		</div>
+		<script>
+			$('#btninfo').click(function() {
+				swal("Ahaa!!!", "Sözleşmeyi imzaladınız...", "success");
+			});
+		</script>
+	</section>
