@@ -7,7 +7,7 @@ namespace DynamicBlogApp.NetCore6.Controllers
 {
 	public class NewsLetterController : Controller
 	{
-		NewsLetterManager nm = new NewsLetterManager(new EfNewsLetterRepository());
+		NewsLetterManager nlm = new NewsLetterManager(new EfNewsLetterRepository());
 		[HttpGet]
 		public PartialViewResult SubsMail()
 		{
@@ -17,7 +17,7 @@ namespace DynamicBlogApp.NetCore6.Controllers
         public PartialViewResult SubsMail(NewsLetter p)
         {
 			p.MailStatus = true;
-			nm.AddNewsLetter(p);
+			nlm.AddNewsLetter(p);
             return PartialView();
         }
     }
