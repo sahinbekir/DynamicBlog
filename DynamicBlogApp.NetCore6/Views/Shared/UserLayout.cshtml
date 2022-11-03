@@ -6,7 +6,7 @@
 <html lang="zxx">
 
 <head>
-	<title>Weblog a Blogging Category Bootstrap responsive WebTemplate | Blog3 :: w3layouts</title>
+	<title>Dynamic Blog With Asp.Net Core</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<meta name="keywords" content="Weblog a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -36,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="row">
 				<!--Logo and Project Name-->
 				<div class="col-md-4 logo text-left">
-					<a class="navbar-brand" href="/">
+					<a class="navbar-brand" href="~/Writer/Index/">
 						<i class="fab fa-linode"></i> DynamicBlog</a>
 				</div>
 				@await Html.PartialAsync("Welcome")
@@ -61,9 +61,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="row">
 				@await Html.PartialAsync("AboutUs")
-				@await Html.PartialAsync("LatestPosts")
+				@await Component.InvokeAsync("BlogLast3Post")
 				<!-- subscribe -->
-				@await Html.PartialAsync("Subscribe")
+				
+				@await Html.PartialAsync("~/Views/NewsLetter/SubsMail.cshtml")
 				<!-- //subscribe -->
 			</div>
 			<!-- footer -->

@@ -19,5 +19,7 @@ namespace DynamicBlogApp.NetCore6.Controllers
             var values = bm.GetBlogById(id);
             return View(values);
         }
+
+        
     }
 }
