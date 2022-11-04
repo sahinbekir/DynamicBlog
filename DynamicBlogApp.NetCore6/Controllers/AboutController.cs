@@ -9,7 +9,7 @@ namespace DynamicBlogApp.NetCore6.Controllers
         AboutManager abm = new AboutManager(new EfAboutRepository());
         public IActionResult Index()
         {
-            var values = abm.GetAbouts();
+            var values = abm.GetListAll();
             return View(values);
         }
         public PartialViewResult SocialMediaAbout()

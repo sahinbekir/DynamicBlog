@@ -4,6 +4,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,22 +18,24 @@ namespace BusinessLayer.Concrete
         {
             _blogDal = blogDal;
         }
-
-        public void BlogAdd(Blog blog)
+        public void TAdd(Blog t)
         {
-            _blogDal.Insert(blog);
+            _blogDal.Insert(t);
         }
 
-        public void BlogDelete(Blog blog)
+        public void TUpdate(Blog t)
         {
-            _blogDal.Delete(blog);
+            _blogDal.Delete(t);
         }
 
-        public void BlogUpdate(Blog blog)
+        public void TDelete(Blog t)
         {
-            _blogDal.Update(blog);
+            _blogDal.Update(t);
         }
-
+        public List<Blog> GetListCategoryByWriterBm(int id)
+        {
+            return _blogDal.GetListWithCategoryByWriter(id);
+        }
         public List<Blog> GetBlogListWithCategory()
         {
             return _blogDal.GetListWithCategory();
