@@ -25,12 +25,12 @@ namespace BusinessLayer.Concrete
 
         public void TUpdate(Blog t)
         {
-            _blogDal.Delete(t);
+            _blogDal.Update(t);
         }
 
         public void TDelete(Blog t)
         {
-            _blogDal.Update(t);
+            _blogDal.Delete(t);
         }
         public List<Blog> GetListCategoryByWriterBm(int id)
         {

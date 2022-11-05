@@ -64,6 +64,36 @@ namespace DynamicBlogApp.NetCore6.Controllers
             }
             return View();
         }
+        public IActionResult DeleteBlog(int id)
+        {
+            var blogvalue=bm.GetById(id);
+            bm.TDelete(blogvalue);
+            return RedirectToAction("BlogListByWriter");
+        }
+        [HttpGet]
+        public IActionResult EditBlog(int id)
+        {
+            CategoryManager cm = new CategoryManager(new EfCategoriesRepository());
+            var blogvalue = bm.GetById(id);
+            List<SelectListItem> categoryvalues = (from x in cm.GetListAll()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.CategoryName,
+                                                       Value = x.CategoryID.ToString()
+                                                   }).ToList();
+            ViewBag.cv = categoryvalues;
+
+            return View(blogvalue);
+        }
+        [HttpPost]
+        public IActionResult EditBlog(Blog p)
+        {
+            p.WriterID=6;
+            p.BlogCreateDate=DateTime.Parse(DateTime.Now.ToShortDateString());
+            p.BlogStatus = true;
+            bm.TUpdate(p);
+            return RedirectToAction("BlogListByWriter");
+        }
 
 
     }
