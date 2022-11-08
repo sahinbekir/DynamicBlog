@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using DataAccessLayer.Concrete;
 
 namespace DynamicBlogApp.NetCore6.Controllers
 {
@@ -26,7 +27,10 @@ namespace DynamicBlogApp.NetCore6.Controllers
         }
         public IActionResult BlogListByWriter()
         {
-            var values=bm.GetListCategoryByWriterBm(1);
+            var useremail = User.Identity.Name;
+            Context c = new Context();
+            var writerid = c.Writers.Where(x => x.WriterEmail == useremail).Select(y => y.WriterID).FirstOrDefault();
+            var values=bm.GetListCategoryByWriterBm(writerid);
             return View(values);
         }
         [HttpGet]
@@ -51,7 +55,11 @@ namespace DynamicBlogApp.NetCore6.Controllers
             {
                 p.BlogStatus = true;
                 p.BlogCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                p.WriterID = 1;
+                var useremail = User.Identity.Name;
+                Context c = new Context();
+                var writerid = c.Writers.Where(x => x.WriterEmail == useremail).Select(y => y.WriterID).FirstOrDefault();
+
+                p.WriterID = writerid;
                 bm.TAdd(p);
                 return RedirectToAction("BlogListByWriter", "Blog");
             }
@@ -88,7 +96,11 @@ namespace DynamicBlogApp.NetCore6.Controllers
         [HttpPost]
         public IActionResult EditBlog(Blog p)
         {
-            p.WriterID=1;
+            var useremail = User.Identity.Name;
+            Context c = new Context();
+            var writerid = c.Writers.Where(x => x.WriterEmail == useremail).Select(y => y.WriterID).FirstOrDefault();
+
+            p.WriterID=writerid;
             p.BlogCreateDate=DateTime.Parse(DateTime.Now.ToShortDateString());
             p.BlogStatus = true;
             bm.TUpdate(p);

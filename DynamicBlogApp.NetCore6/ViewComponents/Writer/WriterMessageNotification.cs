@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,14 +7,15 @@ namespace DynamicBlogApp.NetCore6.ViewComponents.Writer
 {
     public class WriterMessageNotification:ViewComponent
     {
-        MessageManager mm = new MessageManager(new EfMessageRepository());
+        Message2Manager mm = new Message2Manager(new EfMessage2Repository());
 
         public IViewComponentResult Invoke()
         {
-            string p;
-            p = "bs_sb@gmail.com";
-            //var values = mm.GetListAll();
-            var values = mm.GetInboxMessagesListByWriter(p);
+            var useremail = User.Identity.Name;
+            Context c = new Context();
+            var writerid = c.Writers.Where(x => x.WriterEmail == useremail).Select(y => y.WriterID).FirstOrDefault();
+
+            var values = mm.GetInboxMessagesListByWriter(writerid);
             return View(values);
         }
     }

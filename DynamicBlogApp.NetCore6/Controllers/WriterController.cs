@@ -8,6 +8,7 @@ using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using DynamicBlogApp.NetCore6.Models;
+using DataAccessLayer.Concrete;
 
 namespace DynamicBlogApp.NetCore6.Controllers
 {
@@ -15,8 +16,14 @@ namespace DynamicBlogApp.NetCore6.Controllers
 	{
 
 		WriterManager wm = new WriterManager(new EfWriterRepository());
+		[Authorize]
 		public IActionResult Index()
 		{
+			var useremail = User.Identity.Name;
+			ViewBag.Useremail = useremail;
+			Context c = new Context();
+			var writername = c.Writers.Where(x=>x.WriterEmail == useremail).Select(y=>y.WriterName).FirstOrDefault();
+			ViewBag.Name = writername;
 			return View();
 		}
 
@@ -31,7 +38,10 @@ namespace DynamicBlogApp.NetCore6.Controllers
 		[HttpGet]
 		public IActionResult WriterEditProfile()
 		{
-			var writervalues = wm.GetById(1);
+            var useremail = User.Identity.Name;
+            Context c = new Context();
+            var writerid = c.Writers.Where(x => x.WriterEmail == useremail).Select(y => y.WriterID).FirstOrDefault();
+            var writervalues = wm.GetById(writerid);
 			return View(writervalues);
 		}
         [HttpPost]
