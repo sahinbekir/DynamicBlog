@@ -71,7 +71,7 @@ namespace DynamicBlogApp.NetCore6.Controllers
                 var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/WriterImageFiles/", newimagename);
                 var stream = new FileStream(location, FileMode.Create);
                 p.WriterImage.CopyTo(stream);
-                //p.WriterImage = newimagename;
+				//p.WriterImage = newimagename;
             }
             w.WriterID = 0;
             w.WriterName = p.WriterName;
