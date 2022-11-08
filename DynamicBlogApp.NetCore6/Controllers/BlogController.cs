@@ -26,7 +26,7 @@ namespace DynamicBlogApp.NetCore6.Controllers
         }
         public IActionResult BlogListByWriter()
         {
-            var values=bm.GetListCategoryByWriterBm(6);
+            var values=bm.GetListCategoryByWriterBm(1);
             return View(values);
         }
         [HttpGet]
@@ -51,7 +51,7 @@ namespace DynamicBlogApp.NetCore6.Controllers
             {
                 p.BlogStatus = true;
                 p.BlogCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                p.WriterID = 6;
+                p.WriterID = 1;
                 bm.TAdd(p);
                 return RedirectToAction("BlogListByWriter", "Blog");
             }
@@ -88,7 +88,7 @@ namespace DynamicBlogApp.NetCore6.Controllers
         [HttpPost]
         public IActionResult EditBlog(Blog p)
         {
-            p.WriterID=6;
+            p.WriterID=1;
             p.BlogCreateDate=DateTime.Parse(DateTime.Now.ToShortDateString());
             p.BlogStatus = true;
             bm.TUpdate(p);

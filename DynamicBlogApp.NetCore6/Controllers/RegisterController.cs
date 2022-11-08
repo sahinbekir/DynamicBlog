@@ -3,27 +3,30 @@ using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DynamicBlogApp.NetCore6.Controllers
 {
 	public class RegisterController : Controller
 	{
+		
 		WriterManager wm = new WriterManager(new EfWriterRepository());
-
+		[AllowAnonymous]
 		[HttpGet]
 		public IActionResult Register()
 		{
 			return View();
 		}
-		[HttpPost]
+        [AllowAnonymous]
+        [HttpPost]
 		public IActionResult Register(Writer p)
 		{
 			WriterValidator wv = new WriterValidator();
 			ValidationResult result = wv.Validate(p);
 			if (result.IsValid)
 			{
-				wm.WriterAdd(p);
+				wm.TAdd(p);
 				return RedirectToAction("Index", "Blog");
 			}
 			else

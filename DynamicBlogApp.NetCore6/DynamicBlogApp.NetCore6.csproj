@@ -7,6 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewComponents\Writer\NewFolder\**" />
+    <Compile Remove="Views\Shared\Components\NewFolder1\**" />
+    <Compile Remove="Views\Shared\Components\NewFolder2\**" />
+    <Content Remove="ViewComponents\Writer\NewFolder\**" />
+    <Content Remove="Views\Shared\Components\NewFolder1\**" />
+    <Content Remove="Views\Shared\Components\NewFolder2\**" />
+    <EmbeddedResource Remove="ViewComponents\Writer\NewFolder\**" />
+    <EmbeddedResource Remove="Views\Shared\Components\NewFolder1\**" />
+    <EmbeddedResource Remove="Views\Shared\Components\NewFolder2\**" />
+    <None Remove="ViewComponents\Writer\NewFolder\**" />
+    <None Remove="Views\Shared\Components\NewFolder1\**" />
+    <None Remove="Views\Shared\Components\NewFolder2\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
     <ProjectReference Include="..\EntityLayer\EntityLayer.csproj" />
@@ -25,6 +40,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\WriterImageFiles\" />
   </ItemGroup>
 
 </Project>

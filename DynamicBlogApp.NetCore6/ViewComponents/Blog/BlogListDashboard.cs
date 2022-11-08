@@ -4,12 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DynamicBlogApp.NetCore6.ViewComponents.Blog
 {
-    public class ThisWriterBlogs : ViewComponent
+    public class BlogListDashboard:ViewComponent
     {
         BlogManager bm = new BlogManager(new EfBlogRepository());
-        public IViewComponentResult Invoke(int id)
+        public IViewComponentResult Invoke()
         {
-            var values = bm.GetBlogListByWriter(1);
+            var values = bm.GetBlogListWithCategory();
             return View(values);
         }
     }

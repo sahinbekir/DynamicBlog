@@ -22,7 +22,7 @@ namespace DynamicBlogApp.NetCore6.Controllers
         {
             p.CommentCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             p.CommentStatus = true;
-            p.BlogID = 16;
+            p.BlogID = 4;
             cm.CommentAdd(p);
             return PartialView();
         }
