@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
-builder.Services.AddMvc(config=>
+builder.Services.AddMvc(config =>
 {
     var policy = new AuthorizationPolicyBuilder()
         .RequireAuthenticatedUser()
@@ -32,7 +33,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 //app.UseStatusCodePages(); This for error code.
-app.UseStatusCodePagesWithReExecute("/ErrorPage/error1","?code={0}");
+app.UseStatusCodePagesWithReExecute("/ErrorPage/error1", "?code={0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -44,7 +45,10 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Login}/{action=Index}/{id?}");
+app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Login}/{action=Index}/{id?}");
 
 app.Run();

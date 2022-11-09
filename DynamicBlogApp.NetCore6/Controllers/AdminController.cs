@@ -8,5 +8,9 @@ namespace DynamicBlogApp.NetCore6.Controllers
         {
             return View();
         }
+        public PartialViewResult AdminNavbarPartial()
+        {
+            return PartialView();
+        }
     }
 }
