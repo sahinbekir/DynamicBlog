@@ -205,7 +205,7 @@
 
     <!-- Peity -->
     <script src="~/Admin/js/demo/peity-demo.js"></script>
-
+    @await RenderSectionAsync("scripts")
     <script>
         $(document).ready(function(){
             $('.i-checks').iCheck({

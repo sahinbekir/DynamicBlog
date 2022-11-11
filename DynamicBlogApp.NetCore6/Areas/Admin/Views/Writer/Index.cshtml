@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Ajax Yazar İşlemleri</h1>
+<br />
+<button type="button" id="btngetgist" class="btn btn-outline-primary">Writer List</button>
+
+<br />
+<div id="writerlist">
+    Writer List
+</div>
+<br />
+<div>
+    <input type="text" id="writerid" placeholder="Writer Id" class="form-control" />
+</div>
+<button type="button" id="btngetbyid" class="btn btn-outline-success">Writer Fetch</button>
+<br />
+<div id="writerfetch">
+    Writer Fetch
+</div>
+<br />
+
+@section scripts{
+    <script>
+        $("#btngetbyid").click(x=> {
+
+            let id = $("#writerid").val();
+                   // console.log(w);
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "Get",
+                url: "/Admin/Writer/GetWriterById",
+                data: {writerid: id},
+                success: function (func) {
+                    let w = jQuery.parseJSON(func);
+                    console.log(w);
+                    /*let findwriterhtml = "<table class=table table-bordered> <tr> <th> Writer Id</th> <th> Writer Name</th> </tr>";
+                    $.each(w, (index, value) => {
+                        findwriterhtml += `<tr><td>${value.Id}</td><td>${value.Name}</td></tr>`
+                    }
+                    );
+                    findwriterhtml += "</table>";
+                    $("#writerfetch").html(findwriterhtml);
+                    */
+                }
+            });
+                    
+
+                
+            });
+        
+        
+        $("#btngetgist").click(function (){
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "Get",
+                url: "/Admin/Writer/WriterList",
+                success: function(func){
+                    let w = jQuery.parseJSON(func);
+                    console.log(func);
+                    let tablehtml = "<table class=table table-bordered> <tr> <th> Writer Id</th> <th> Writer Name</th> </tr>";
+                    $.each(w,(index, value)=>{
+                        tablehtml += `<tr><td>${value.Id}</td><td>${value.Name}</td></tr>`
+                    });
+                    tablehtml += "</table>";
+                    $("#writerlist").html(tablehtml);
+
+                }
+            });
+        })
+    </script>
+}

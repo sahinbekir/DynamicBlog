@@ -10,6 +10,9 @@ Admin Design Template: https://disk.yandex.com.tr/d/EODKavbYRPlA4Q "inspinia-gh-
 
 Project Packets:
 
+Core Layer:
+Entity Layer:
+
 Data Access Layer
 Microsoft.EntityFrameworkCore
 Microsoft.EntityFrameworkCore.Design
@@ -20,9 +23,12 @@ Business Layer
 FluentValidation.AspNetCore
 
 Presentation Layer
+ClosedXML
+FluentValidation.AspNetCore
 Microsoft.EntityFrameworkCore
 Microsoft.EntityFrameworkCore.Design
 Microsoft.EntityFrameworkCore.Tools
 Microsoft.EntityFrameworkCore.SqlServer
 Microsoft.VisualStudio.Web.CodeGeneration.Design
-FluentValidation.AspNetCore
+X.PagedList
+X.PagedList.Mvc.Core
