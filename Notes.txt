@@ -1,46 +1,54 @@
 Created with Asp.Net Core 6 and SQL Server 18
 
-5 n tier architecture
+5 n tier Architecture
+
 Entity Layer 'CLASS'
+
 Data Access Layer 'CRUD'
+
 Business Layer 'VALIDATIONS'
-UI-Presentation Layer 'FRONT'
+
+UI-Presentation Layer 'FRONTEND/UI'
+
 Core Layer 'CORE'
+
 +++++++++++++++++++++++++++
+
 API Layer 'API'
 
-1-----------------------------------------------------------
-Class for EntityLayer
-About, Blog, Category, Comment, Contact, Writer
+Read.ME
+Project Tecnologies Versions
+Asp.Net Core 6
+MS SQL Server 18
 
-2-----------------------------------------------------------
-other Packet Manager Console use for Migrations $# add-migration migrationname #$ update-database
-Libs for DataAccessLayer       ***IMP: not in only here. Download with NuGet
-entity framework core
-entity framework core design
-entity framework core sqlserver
-entity framework core tools
+FRONTEND TEMPLATES:
+Blog Design Template: https://github.com/MuratYucedag/CoreBlogTema "Weblog-W3layouts"
+Writer Design Template: https://github.com/MuratYucedag/Core_Writer_Layout "Purple-Template"
+WebError Pages: https://github.com/MuratYucedag/Core404Page "bicycle-error-page"
+Admin Design Template: https://disk.yandex.com.tr/d/EODKavbYRPlA4Q "inspinia-gh-pages"
 
-Class for DataAccessLayer
-Abstract
-Concrete CONTEXT -> Db build and entityclass set Ex.(Class1 set Class1s)
-Repositories
+Project Packets:
 
-Projects for DataAccessLayer -> EntityLayer
+Core Layer:
+Entity Layer:
+Api Layer:
 
-3-----------------------------------------------------------
-Projects for BusinessLayer -> EntityLayer, DataAccessLayer
+Data Access Layer
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.Design
+Microsoft.EntityFrameworkCore.Tools
+Microsoft.EntityFrameworkCore.SqlServer
 
-4-----------------------------------------------------------
-Projects for UI-PresentationLayer (MainProject) -> EntityLayer, DataAccessLayer, BusinessLayer
-Libs for DataAccessLayer       ***IMP: not in only here. Download with NuGet
-entity framework core
-entity framework core design
-entity framework core sqlserver
-entity framework core tools
+Business Layer
+FluentValidation.AspNetCore
 
-5-----------------------------------------------------------
-Projects for CoreLayer -> 
-
-6-----------------------------------------------------------
-Projects for ApiLayer -> 
+Presentation Layer
+ClosedXML
+FluentValidation.AspNetCore
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.Design
+Microsoft.EntityFrameworkCore.Tools
+Microsoft.EntityFrameworkCore.SqlServer
+Microsoft.VisualStudio.Web.CodeGeneration.Design
+X.PagedList
+X.PagedList.Mvc.Core

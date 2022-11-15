@@ -7,17 +7,20 @@ using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using DataAccessLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DynamicBlogApp.NetCore6.Controllers
 {
     public class BlogController : Controller
     {
         BlogManager bm = new BlogManager(new EfBlogRepository());
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var values = bm.GetBlogListWithCategory();
             return View(values);
         }
+        [AllowAnonymous]
         public IActionResult BlogDetails(int id)
         {
             ViewBag.i=id;
@@ -25,11 +28,12 @@ namespace DynamicBlogApp.NetCore6.Controllers
             var values = bm.GetBlogById(id);
             return View(values);
         }
+        [AllowAnonymous]
         public IActionResult BlogListByWriter()
         {
-            var useremail = User.Identity.Name;
+            var username = User.Identity.Name;
             Context c = new Context();
-            var writerid = c.Writers.Where(x => x.WriterEmail == useremail).Select(y => y.WriterID).FirstOrDefault();
+            var writerid = c.Users.Where(x => x.UserName == username).Select(y => y.Id).FirstOrDefault();
             var values=bm.GetListCategoryByWriterBm(writerid);
             return View(values);
         }

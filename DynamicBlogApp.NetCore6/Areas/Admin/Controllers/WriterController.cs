@@ -22,6 +22,27 @@ namespace DynamicBlogApp.NetCore6.Areas.Admin.Controllers
             var jsonWriters = JsonConvert.SerializeObject(writers);
             return Json(jsonWriters);
         }
+        [HttpPost]
+        public IActionResult AddWriter(WriterClass w)
+        {
+            writers.Add(w);
+            var jsonwriters = JsonConvert.SerializeObject(w);
+            return Json(jsonwriters);
+        }
+        public IActionResult DeleteWriter(int id)
+        {
+            var writer = writers.FirstOrDefault(x=>x.Id==id);
+            writers.Remove(writer);
+            //var jsonwriters = JsonConvert.SerializeObject(w);
+            return Json(writers);
+        }
+        public IActionResult UpdateWriter(WriterClass w)
+        {
+            var writer = writers.FirstOrDefault(x => x.Id == w.Id);
+            writer.Name = w.Name;
+            var jsonwriter = JsonConvert.SerializeObject(w);
+            return Json(jsonwriter);
+        }
         public static List<WriterClass> writers = new List<WriterClass>
         {
             new WriterClass()

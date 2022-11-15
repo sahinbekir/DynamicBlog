@@ -1,14 +1,47 @@
-﻿
+﻿@model UserSignInViewModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 
 <div class="container">
-		<!---728x90--->
+	<!---728x90--->
+
+	<h3 class="tittle">Sign In Now</h3>
+	<!---728x90--->
+	<div class="row inner-sec">
+		<div class="login p-5 bg-light mx-auto mw-100">
+			<form method="post">
+				<div class="form-group">
+					<label for="exampleInputEmail1 mb-2">Email address</label>
+					<input type="text" class="form-control" id="exampleInputEmail1" asp-for="@Model.UserName" aria-describedby="emailHelp" placeholder="" >
+					<span asp-validation-for="@Model.UserName"></span>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword1 mb-2">Password</label>
+					<input type="password" class="form-control" id="exampleInputPassword1" asp-for="@Model.Password" placeholder="" >
+					<span asp-validation-for="@Model.Password"></span>
+				</div>
+				<div class="form-check mb-2">
+					<input type="checkbox" class="form-check-input" id="exampleCheck1">
+					<label class="form-check-label" for="exampleCheck1">Check me out</label>
+				</div>
+				<button type="submit" class="btn btn-primary submit mb-4">Sign In</button>
+				<p><a href="~/Register/Register"> Don't have an account?</a></p>
+				<div asp-validation-summary="ModelOnly">
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!--
+    <div class="container">
+		
 
 				<h3 class="tittle">Sign In Now</h3>
-				<!---728x90--->
+				
 				<div class="row inner-sec">
 					<div class="login p-5 bg-light mx-auto mw-100">
 					<form  method="post">
@@ -31,4 +64,5 @@
 					</div>
 				</div>
 </div>
+-->
 

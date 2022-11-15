@@ -9,44 +9,71 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using DynamicBlogApp.NetCore6.Models;
 using DataAccessLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
+using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace DynamicBlogApp.NetCore6.Controllers
 {
-	public class WriterController : Controller
-	{
+    public class WriterController : Controller
+    {
 
-		WriterManager wm = new WriterManager(new EfWriterRepository());
-		[Authorize]
-		public IActionResult Index()
-		{
-			var useremail = User.Identity.Name;
-			ViewBag.Useremail = useremail;
-			Context c = new Context();
-			var writername = c.Writers.Where(x=>x.WriterEmail == useremail).Select(y=>y.WriterName).FirstOrDefault();
-			ViewBag.Name = writername;
-			return View();
-		}
+        WriterManager wm = new WriterManager(new EfWriterRepository());
+        private readonly UserManager<AppUser> _userManager;
+        public WriterController(UserManager<AppUser> userManager)
+        {
 
-		public PartialViewResult WriterNavbarPartial()
-		{
-			return PartialView();
-		}
+            _userManager = userManager;
+        }
+
+        [Authorize]
+        public IActionResult Index()
+        {
+            var useremail = User.Identity.Name;
+            ViewBag.Useremail = useremail;
+            Context c = new Context();
+            var writername = c.Writers.Where(x => x.WriterEmail == useremail).Select(y => y.WriterName).FirstOrDefault();
+            ViewBag.Name = writername;
+            return View();
+        }
+
+        public PartialViewResult WriterNavbarPartial()
+        {
+            return PartialView();
+        }
         public PartialViewResult WriterFooterPartial()
         {
             return PartialView();
         }
-		[HttpGet]
-		public IActionResult WriterEditProfile()
-		{
-            var useremail = User.Identity.Name;
-            Context c = new Context();
-            var writerid = c.Writers.Where(x => x.WriterEmail == useremail).Select(y => y.WriterID).FirstOrDefault();
-            var writervalues = wm.GetById(writerid);
-			return View(writervalues);
-		}
-        [HttpPost]
-        public IActionResult WriterEditProfile(Writer p)
+        [HttpGet]
+        public async Task<IActionResult> WriterEditProfile()
         {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            UserUpdateViewModel model = new UserUpdateViewModel();
+            model.ns = user.NameSurname;
+            model.phone = user.PhoneNumber;
+            model.email = user.Email;
+            model.un = user.UserName;
+            //model.password = user.PasswordHash;
+            model.img = user.ImageUrl;
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> WriterEditProfile(UserUpdateViewModel model)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            //UserUpdateViewModel model = new UserUpdateViewModel();
+            user.NameSurname = model.ns;
+            user.PhoneNumber = model.phone;
+            user.Email = model.email;
+            user.UserName = model.un;
+            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, model.pass);
+            //user.PasswordHash = model.password;
+            user.ImageUrl = model.img;
+            var result = await _userManager.UpdateAsync(user);
+            return RedirectToAction("Index", "Dashboard");
+
+           
+            /*
 			WriterValidator wl = new WriterValidator();
 			ValidationResult results = wl.Validate(p);
             //ValidationResult Error about that: Rendering DataAnnotations
@@ -62,15 +89,16 @@ namespace DynamicBlogApp.NetCore6.Controllers
 					ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
 				}
 			}
-			return View();
-            
+			return View();*/
+
         }
-		[HttpGet]
-		public IActionResult WriterAdd()
-		{
-			return View();
-		}
-		[HttpPost]
+        
+        [HttpGet]
+        public IActionResult WriterAdd()
+        {
+            return View();
+        }
+        [HttpPost]
         public IActionResult WriterAdd(AddProfileImage p)
         {
             Writer w = new Writer();
@@ -81,7 +109,7 @@ namespace DynamicBlogApp.NetCore6.Controllers
                 var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/WriterImageFiles/", newimagename);
                 var stream = new FileStream(location, FileMode.Create);
                 p.WriterImage.CopyTo(stream);
-				//p.WriterImage = newimagename;
+                w.WriterImage = newimagename;
             }
             w.WriterID = 0;
             w.WriterName = p.WriterName;
@@ -89,7 +117,7 @@ namespace DynamicBlogApp.NetCore6.Controllers
             w.WriterAbout = p.WriterAbout;
             w.WriterPassword = p.WriterPassword;
             w.WriterStatus = true;
-            //wm.TAdd(p);
+            wm.TAdd(w);
             return RedirectToAction("Index", "Dashboard");
         }
     }

@@ -7,9 +7,10 @@ namespace DynamicBlogApp.NetCore6.Controllers
     {
         public IActionResult Index()
         {
-            var useremail = User.Identity.Name;
+            var username = User.Identity.Name;
             Context c = new Context();
-            var writerid = c.Writers.Where(x => x.WriterEmail == useremail).Select(y => y.WriterID).FirstOrDefault();
+            var useremail = c.Users.Where(x => x.UserName == username).Select(y => y.Email).FirstOrDefault();
+            var writerid = c.Users.Where(x => x.UserName == username).Select(y => y.Id).FirstOrDefault();
             ViewBag.v1 = c.Blogs.Count().ToString();
             ViewBag.v2=c.Blogs.Where(x=>x.WriterID==writerid).Count().ToString();
             ViewBag.v3 = c.Categories.Count().ToString();

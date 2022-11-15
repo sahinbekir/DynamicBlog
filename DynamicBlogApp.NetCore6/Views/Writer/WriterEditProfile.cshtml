@@ -1,66 +1,53 @@
-﻿@model EntityLayer.Concrete.Writer
+﻿@model UserUpdateViewModel
 @{
     ViewData["Title"] = "WriterEditProfile";
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
 
-@using (Html.BeginForm("WriterEditProfile", "Writer", FormMethod.Post))
-{    
-    <div class="col-12 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <h4 style="text-align: center" class="card-title">Writer Profile Informations</h4>
-                <p style="text-align: center" class="card-description"> Update Profile </p>
-                @Html.HiddenFor(x=>x.WriterID, new {@class="form-control"})
-                <form class="forms-sample">
-                    <div class="form-group">
-                        <label for="exampleInputName1">Name</label>
-                        @Html.TextBoxFor(x=>x.WriterName, new {@class="form-control"})
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="exampleInputName1">About</label>
-                        @Html.TextAreaFor(x=>x.WriterAbout,10,3, new {@class="form-control"})
-                    </div>
-                    <div class="form-group">
-                        <label>File upload</label>
-                        <input type="file" name="WriterImage" />
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail3">Email address</label>
-                        @Html.TextBoxFor(x=>x.WriterEmail, new {@class="form-control"})
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword4">Password</label>
-                        @Html.PasswordFor(x=>x.WriterPassword, new {@class="form-control"})
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword4">Password Confirm</label>
-                        @Html.PasswordFor(x=>x.WriterPassword, new {@class="form-control"})
-                    </div>
-                    <!--<div class="form-group">
-                        <label for="exampleSelectGender">Gender</label>
-                        <select class="form-control" id="exampleSelectGender">
-                            <option>Male</option>
-                            <option>Female</option>
-                        </select>
-                    </div>-->
-                    
-                    <!--<div class="form-group">
-                        <label for="exampleInputCity1">City</label>
-                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleTextarea1">Textarea</label>
-                        <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-                    </div>>-->
-                    
-                    <button type="submit" class="btn btn-gradient-primary mr-2">Update</button>
-                    <button class="btn btn-light">Cancel</button>
-                </form>
-            </div>
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 style="text-align: center" class="card-title">Writer Profile Informations</h4>
+            <p style="text-align: center" class="card-description"> Update Profile </p>
+            <form class="forms-sample" method="post">
+                <div class="form-group">
+                    <label for="exampleInputName1">Name</label>
+                    <input type="text" asp-for="@Model.ns" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputName1">About</label>
+                    <input type="text" asp-for="@Model.phone" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>File upload</label>
+                    <input type="file" asp-for="@Model.img" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Email address</label>
+                    <input type="email" asp-for="@Model.email" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">UserName</label>
+                    <input type="text" asp-for="@Model.un" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword4">Password</label>
+                    <input type="password" asp-for="@Model.pass" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword4">Password Confirm</label>
+                    <input type="password" asp-for="@Model.pass" class="form-control" />
+                </div>
+
+
+                <button type="submit" class="btn btn-gradient-primary mr-2">Update</button>
+                <a href="/Dashboard/Index/" class="btn btn-danger read-m">Cancel</a>
+            </form>
         </div>
     </div>
-}
+</div>
+
 
