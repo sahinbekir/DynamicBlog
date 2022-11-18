@@ -19,25 +19,23 @@ namespace DynamicBlogApp.NetCore6.Controllers
 
         WriterManager wm = new WriterManager(new EfWriterRepository());
         private readonly UserManager<AppUser> _userManager;
+        Context c = new Context();
         public WriterController(UserManager<AppUser> userManager)
         {
 
             _userManager = userManager;
         }
-
-        [Authorize]
-        public IActionResult Index()
-        {
-            var useremail = User.Identity.Name;
-            ViewBag.Useremail = useremail;
-            Context c = new Context();
-            var writername = c.Writers.Where(x => x.WriterEmail == useremail).Select(y => y.WriterName).FirstOrDefault();
-            ViewBag.Name = writername;
-            return View();
-        }
+        
 
         public PartialViewResult WriterNavbarPartial()
         {
+            var username = User.Identity.Name;
+            ViewBag.v11 = username;
+
+            var writername = c.Users.Where(x => x.UserName == username).Select(y => y.Email).FirstOrDefault();
+            ViewBag.v21 = writername;
+            var writerimg = c.Users.Where(x => x.UserName == username).Select(y => y.ImageUrl).FirstOrDefault();
+            ViewBag.v31 = writerimg;
             return PartialView();
         }
         public PartialViewResult WriterFooterPartial()
@@ -92,7 +90,7 @@ namespace DynamicBlogApp.NetCore6.Controllers
 			return View();*/
 
         }
-        
+        // SADECE PROTOTİP, FOTOGRAF EKLEME ÖRNEĞİ İÇİN.
         [HttpGet]
         public IActionResult WriterAdd()
         {

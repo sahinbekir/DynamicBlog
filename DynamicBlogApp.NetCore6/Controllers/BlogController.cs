@@ -28,7 +28,6 @@ namespace DynamicBlogApp.NetCore6.Controllers
             var values = bm.GetBlogById(id);
             return View(values);
         }
-        [AllowAnonymous]
         public IActionResult BlogListByWriter()
         {
             var username = User.Identity.Name;
@@ -53,15 +52,18 @@ namespace DynamicBlogApp.NetCore6.Controllers
         [HttpPost]
         public IActionResult BlogAdd(Blog p)
         {
+            var username = User.Identity.Name;
+            Context c = new Context();
+            var writerid = c.Users.Where(x => x.UserName == username).Select(y => y.Id).FirstOrDefault();
+
+
             BlogValidator bv = new BlogValidator();
             ValidationResult result = bv.Validate(p);
             if (result.IsValid)
             {
                 p.BlogStatus = true;
                 p.BlogCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                var useremail = User.Identity.Name;
-                Context c = new Context();
-                var writerid = c.Writers.Where(x => x.WriterEmail == useremail).Select(y => y.WriterID).FirstOrDefault();
+                
 
                 p.WriterID = writerid;
                 bm.TAdd(p);
@@ -100,9 +102,9 @@ namespace DynamicBlogApp.NetCore6.Controllers
         [HttpPost]
         public IActionResult EditBlog(Blog p)
         {
-            var useremail = User.Identity.Name;
+            var username = User.Identity.Name;
             Context c = new Context();
-            var writerid = c.Writers.Where(x => x.WriterEmail == useremail).Select(y => y.WriterID).FirstOrDefault();
+            var writerid = c.Users.Where(x => x.UserName == username).Select(y => y.Id).FirstOrDefault();
 
             p.WriterID=writerid;
             p.BlogCreateDate=DateTime.Parse(DateTime.Now.ToShortDateString());

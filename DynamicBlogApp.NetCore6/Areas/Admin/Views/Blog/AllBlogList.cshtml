@@ -1,0 +1,65 @@
+﻿@using EntityLayer.Concrete
+@model List<Blog>
+@{
+    ViewData["Title"] = "AllBlogList";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<body>
+
+
+
+
+    <h1 style="text-align:center"><b><strong>All Blog List</strong></b></h1>
+
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3">
+                    <div class="ibox">
+                        <div class="ibox-content product-box">
+                            <a href="/Blog/BlogDetails/@item.BlogID/">
+                                <img src="@item.BlogThumbnailImage" class="card-img-top img-fluid" alt="">
+                            </a>
+                            <!--
+                                <div class="product-imitation">
+                                <a href="/Blog/BlogDetails/@item.BlogID/">
+                                    <img src="@item.BlogThumbnailImage" class="card-img-top img-fluid" alt="">
+                                </a>
+                            </div>
+                            -->
+                            
+                            <div class="product-desc">
+
+                                <span class="product-price">
+                                    @(((DateTime)item.BlogCreateDate).ToString("dd.MMM.yyyy"))
+                                    
+                                </span>
+                                <h5 style="text-align:right"><small class="text-muted">@item.Category.CategoryName</small></h5>
+                                <a href="/Blog/BlogDetails/@item.BlogID" class="product-name"> @item.BlogTitle </a>
+
+
+
+                                <div class="small m-t-xs">
+                                    @item.BlogContent?.Substring(0,item.BlogContent.Substring(0,75).LastIndexOf(" "))...
+                                </div>
+                                <div class="m-t text-righ">
+
+                                    <a href="/Blog/BlogDetails/@item.BlogID" class="btn btn-xs btn-outline btn-primary">Read Details <i class="fa fa-long-arrow-right"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</body>
+
+
+
+

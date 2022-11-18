@@ -39,7 +39,7 @@
         </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                    <span class="m-r-sm text-muted welcome-message">Welcome to DynamicBlog.</span>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -139,15 +139,16 @@
 
 
                 <li>
-                    <a href="~/Admin/login.html">
-                        <i class="fa fa-sign-out"></i> Log out
+                    <a href="/Login/LogOut/">
+                        <i class="fa fa-sign-out"></i> Log Out
                     </a>
                 </li>
             </ul>
 
         </nav>
         </div>
-            <div class="row wrapper border-bottom white-bg page-heading">
+            <!--
+                <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
                     <h2>Static Tables</h2>
                     <ol class="breadcrumb">
@@ -166,6 +167,7 @@
 
                 </div>
             </div>
+            -->
             
         
             <div class="wrapper wrapper-content animated fadeInRight">
@@ -174,10 +176,10 @@
         
         <div class="footer">
             <div class="float-right">
-                10GB of <strong>250GB</strong> Free.
+                Powered by <strong>Bekir Şahin</strong>
             </div>
             <div>
-                <strong>Copyright</strong> Example Company &copy; 2014-2018
+                <strong>DynamicBlog</strong> Example Company &copy; @DateTime.Now.Year
             </div>
         </div>
 
@@ -205,7 +207,7 @@
 
     <!-- Peity -->
     <script src="~/Admin/js/demo/peity-demo.js"></script>
-    <!-- await RenderSectionAsync("scripts")  for writer  add with ajax scripts-->
+    @RenderSectionAsync("scripts")
     <script>
         $(document).ready(function(){
             $('.i-checks').iCheck({

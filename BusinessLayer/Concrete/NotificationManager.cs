@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
+    //return _message2Dal.GetInList3WithMessageByWriter(id).TakeLast(3).OrderByDescending(x=>x.MessageDate).ToList();
     public class NotificationManager : INotificationService
     {
         INotificationDal _notificationDal;

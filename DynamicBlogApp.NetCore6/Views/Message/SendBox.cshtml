@@ -1,22 +1,23 @@
 ﻿@using EntityLayer.Concrete
 @model List<Message2>
 @{
-    ViewData["Title"] = "InBox";
+    ViewData["Title"] = "SendBox";
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
+
 
 <div class="row">
     <div class="col-12 grid-margin">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Message In Box</h4>
+                <h4 class="card-title">Message Send Box</h4>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th> # </th>
                                 <th> Subject </th>
-                                <th> Sender </th>
+                                <th> Receiver </th>
                                 <th> Create Date </th>
                                 <th> Open Message Details </th>
                             </tr>
@@ -27,7 +28,7 @@
                                 <tr>
                                     <td> @item.MessageId </td>
                                     <td> @item.MessageSubject </td>
-                                    <td> @item.SenderUser.WriterName </td>
+                                    <td> @item.ReceiverUser.WriterName </td>
                                     <td> @(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy")) </td>
                                     <td>
                                         <a href="/Message/MessageDetails/@item.MessageId" class="btn btn-dark">Open Details</a>
@@ -43,4 +44,6 @@
         </div>
     </div>
 </div>
+
+
 

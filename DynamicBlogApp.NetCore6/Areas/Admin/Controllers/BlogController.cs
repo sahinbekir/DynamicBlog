@@ -1,5 +1,7 @@
-﻿using ClosedXML.Excel;
+﻿using BusinessLayer.Concrete;
+using ClosedXML.Excel;
 using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using DocumentFormat.OpenXml.Spreadsheet;
 using DynamicBlogApp.NetCore6.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +11,7 @@ namespace DynamicBlogApp.NetCore6.Areas.Admin.Controllers
     [Area("Admin")]
     public class BlogController : Controller
     {
+        BlogManager _blogManager = new BlogManager(new EfBlogRepository());
         
         public IActionResult ExportStaticExcelBlogList()
         {
@@ -91,6 +94,11 @@ namespace DynamicBlogApp.NetCore6.Areas.Admin.Controllers
         public IActionResult BlogTitleListExcel()
         {
             return View();
+        }
+        public IActionResult AllBlogList()
+        {
+            var values = _blogManager.GetBlogListWithCategory();
+            return View(values);
         }
     }
 

@@ -11,11 +11,11 @@ namespace DynamicBlogApp.NetCore6.ViewComponents.Writer
 
         public IViewComponentResult Invoke()
         {
-            var useremail = User.Identity.Name;
+            var username = User.Identity.Name;
             Context c = new Context();
-            var writerid = c.Writers.Where(x => x.WriterEmail == useremail).Select(y => y.WriterID).FirstOrDefault();
+            var userid = c.Users.Where(x => x.UserName == username).Select(y => y.Id).FirstOrDefault();
 
-            var values = mm.GetInboxMessagesListByWriter(writerid);
+            var values = mm.GetInbox3MessagesListByWriter(userid);
             return View(values);
         }
     }

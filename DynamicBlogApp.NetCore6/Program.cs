@@ -33,6 +33,15 @@ builder.Services.AddAuthentication(
         x.LoginPath = "/Login/Index";
     });
 
+//Cookie TimeOut Setting
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(131);
+
+    options.LoginPath = "/Login/Index/";
+    options.SlidingExpiration = true;
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

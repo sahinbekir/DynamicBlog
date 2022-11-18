@@ -3,32 +3,35 @@
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element">
-                    <img alt="image" class="rounded-circle" src="~/Admin/img/profile_small.jpg" />
+                    <img alt="image" class="rounded-circle" src="/Admin/img/profile_small.jpg" />
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="block m-t-xs font-bold">Bekir Şahin</span>
-                        <span class="text-muted text-xs block">SwE <b class="caret"></b></span>
+                        <span class="text-muted text-xs block">SwE<b class="caret"></b></span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a class="dropdown-item" href="~/Admin/profile.html">Profile</a></li>
-                        <li><a class="dropdown-item" href="~/Admin/contacts.html">Contacts</a></li>
-                        <li><a class="dropdown-item" href="~/Admin/mailbox.html">Mailbox</a></li>
+                        <li><a class="dropdown-item" href="/Admin/Profile/">Profile</a></li>
+                        <li><a class="dropdown-item" href="/Contact/Index/">Contacts</a></li>
+                        <li><a class="dropdown-item" href="/Admin/InBox/">Mailbox</a></li>
                         <li class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="~/Admin/login.html">Logout</a></li>
+                        <li><a class="dropdown-item" href="/Login/LogOut/">Logout</a></li>
                     </ul>
                 </div>
                 <div class="logo-element">
-                    IN+
+                    DB+
                 </div>
             </li>
+            
             <li>
-                <a href="~/Admin/index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span> <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
+                <a href="/Admin/Widget/"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span> <!--<span class="fa arrow"></span>--></a>
+                <!--
+                    <ul class="nav nav-second-level collapse">
                     <li><a href="~/Admin/index.html">Dashboard v.1</a></li>
                     <li><a href="~/Admin/dashboard_2.html">Dashboard v.2</a></li>
                     <li><a href="~/Admin/dashboard_3.html">Dashboard v.3</a></li>
                     <li><a href="~/Admin/dashboard_4_1.html">Dashboard v.4</a></li>
                     <li><a href="~/Admin/dashboard_5.html">Dashboard v.5 </a></li>
                 </ul>
+                -->
             </li>
             <!--
             <li>
@@ -36,8 +39,9 @@
             </li>
             -->
             <li>
-                <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
+                <a href="/Admin/Chart/"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><!--<span class="fa arrow">--></span></a>
+                <!--
+                    <ul class="nav nav-second-level collapse">
                     <li><a href="~/Admin/graph_flot.html">Flot Charts</a></li>
                     <li><a href="~/Admin/graph_morris.html">Morris.js Charts</a></li>
                     <li><a href="~/Admin/graph_rickshaw.html">Rickshaw Charts</a></li>
@@ -47,79 +51,53 @@
                     <li><a href="~/Admin/graph_peity.html">Peity Charts</a></li>
                     <li><a href="~/Admin/graph_sparkline.html">Sparkline Charts</a></li>
                 </ul>
+                -->
             </li>
             <li>
-                <a href="~/Admin/mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Messages </span><span class="label label-warning float-right">16/24</span></a>
+                <a href="#"><i class="fa fa-envelope"></i> <span class="nav-label">Messages </span><span class="label label-warning float-right">16/24</span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="~/Admin/mailbox.html">Inbox</a></li>
-                    <li><a href="~/Admin/mail_detail.html">Email view</a></li>
-                    <li><a href="~/Admin/mail_compose.html">Compose email</a></li>
-                    <li><a href="~/Admin/email_template.html">Email templates</a></li>
+                    <li><a href="/Admin/AdminMessage/InBox/">Inbox</a></li>
+                    <li><a href="/Admin/AdminMessage/SendBox/">SendBox</a></li>
+                    <li><a href="/Admin/AdminMessage/RecycleBox/">RecycleBox</a></li>
+                    <li><a href="/Admin/AdminMessage/CreateMessage/">Create A Message</a></li>
                 </ul>
             </li>
             <li>
-                <a href="~/Admin/metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Metrics</span>  </a>
+                <a href="/Admin/Metrics/"><i class="fa fa-pie-chart"></i> <span class="nav-label">Metrics</span>  </a>
             </li>
 
             <li>
-                <a href="~/Admin/metrics.html"><i class="fa fa-group"></i> <span class="nav-label">Categories</span>  </a>
+                <a href="/Admin/Category/"><i class="fa fa-group"></i> <span class="nav-label">Categories</span>  </a>
             </li>
             <li>
-                <a href="~/Admin/metrics.html"><i class="fa fa-twitter"></i> <span class="nav-label">Blogs</span>  </a>
+                <a href="/Admin/Blog/AllBlogList/"><i class="fa fa-twitter"></i> <span class="nav-label">Blogs</span>  </a>
             </li>
             <li>
-                <a href="~/Admin/metrics.html"><i class="fa fa-comment"></i> <span class="nav-label">Comments</span>  </a>
+                <a href="/Admin/Comment/"><i class="fa fa-comment"></i> <span class="nav-label">Comments</span>  </a>
             </li>
             <li>
-                <a href="~/Admin/metrics.html"><i class="fa fa-user"></i> <span class="nav-label">Writers</span>  </a>
+                <a href="/Admin/Writer/"><i class="fa fa-user"></i> <span class="nav-label">Writers</span>  </a>
             </li>
             <li>
-                <a href="~/Admin/metrics.html"><i class="fa fa-info"></i> <span class="nav-label">Settings</span>  </a>
+                <a href="/Admin/Setting/"><i class="fa fa-info"></i> <span class="nav-label">Settings</span>  </a>
             </li>
             <li>
-                <a href="~/Admin/metrics.html"><i class="fa fa-diamond"></i> <span class="nav-label">Notification</span>  </a>
+                <a href="/Admin/Notification/"><i class="fa fa-bell"></i> <span class="nav-label">Notification</span>  </a>
             </li>
             <li>
-                <a href="~/Admin/metrics.html"><i class="fa fa-phone"></i> <span class="nav-label">Contact</span>  </a>
+                <a href="/Contact/Index/"><i class="fa fa-phone"></i> <span class="nav-label">Contact</span>  </a>
             </li>
             <li>
-                <a href="~/Admin/metrics.html"><i class="fa fa-address-book"></i> <span class="nav-label">About Us</span>  </a>
-            </li>
-            <li>
-                <a href="~/Admin/widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Widgets</span></a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Forms</span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a href="~/Admin/form_basic.html">Basic form</a></li>
-                    <li><a href="~/Admin/form_advanced.html">Advanced Plugins</a></li>
-                    <li><a href="~/Admin/form_wizard.html">Wizard</a></li>
-                    <li><a href="~/Admin/form_file_upload.html">File Upload</a></li>
-                    <li><a href="~/Admin/form_editors.html">Text Editor</a></li>
-                    <li><a href="~/Admin/form_autocomplete.html">Autocomplete</a></li>
-                    <li><a href="~/Admin/form_markdown.html">Markdown</a></li>
-                </ul>
-            </li>
-
-            <li class="active">
-                <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Tables</span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li class="active"><a href="~/Admin/table_basic.html">Static Tables</a></li>
-                    <li><a href="~/Admin/table_data_tables.html">Data Tables</a></li>
-                    <li><a href="~/Admin/table_foo_table.html">Foo Tables</a></li>
-                    <li><a href="~/Admin/jq_grid.html">jqGrid</a></li>
-                </ul>
+                <a href="/About/Index/"><i class="fa fa-address-book"></i> <span class="nav-label">About Us</span>  </a>
             </li>
             
             <li>
-                <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a href="~/Admin/basic_gallery.html">Lightbox Gallery</a></li>
-                    <li><a href="~/Admin/slick_carousel.html">Slick Carousel</a></li>
-                    <li><a href="~/Admin/carousel.html">Bootstrap Carousel</a></li>
-
-                </ul>
+                <a href="/Admin/Blog/BlogTitleListExcel/"><i class="fa fa-balance-scale"></i> <span class="nav-label">Statistic</span></a>
             </li>
+            <li>
+                <a href="/Login/LogOut/"><i class="fa fa-sign-out"></i> <span class="nav-label">LogOut</span></a>
+            </li>
+            
            
         </ul>
 
