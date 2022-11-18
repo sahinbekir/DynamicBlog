@@ -53,7 +53,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Admin\.gitignore" />
     <None Include="wwwroot\Admin\css\bootstrap.css.map" />
     <None Include="wwwroot\Admin\css\bootstrap.min.css.map" />
     <None Include="wwwroot\Admin\css\plugins\blueimp\img\error.svg" />
@@ -376,7 +375,6 @@
     <None Include="wwwroot\Admin\js\plugins\video\responsible-video.js" />
     <None Include="wwwroot\Admin\js\plugins\wow\wow.min.js" />
     <None Include="wwwroot\Admin\js\popper.min.js" />
-    <None Include="wwwroot\Admin\pdf\example.pdf" />
   </ItemGroup>
 
 </Project>
