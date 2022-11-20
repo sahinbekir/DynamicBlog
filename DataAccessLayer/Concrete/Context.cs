@@ -14,6 +14,10 @@ namespace DataAccessLayer.Concrete
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("server=SAHINBEKIR\\SQLEXPRESS01;database=DynamicBlogDb; integrated security=true;");
+            //optionsBuilder.UseSqlServer("server=IP\\HOST;database=DBNAME; user=USERNAME;password=PASSWORD");
+            /*
+             PUBLISH => UI Layer : create a folder
+            */
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -10,10 +10,12 @@ namespace DynamicBlogApp.NetCore6.Controllers
     public class ContactController : Controller
 	{
 		ContactManager cm = new ContactManager(new EfContactRepository());
-		[HttpGet]
+        AboutManager am = new AboutManager(new EfAboutRepository());
+        [HttpGet]
 		public IActionResult Index()
 		{
-			return View();
+			var values = am.GetListAll();
+			return View(values);
 		}
 		[HttpPost]
 		public IActionResult Index(Contact p)

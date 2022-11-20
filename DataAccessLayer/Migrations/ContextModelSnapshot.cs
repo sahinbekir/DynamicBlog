@@ -53,59 +53,6 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Abouts");
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.Admin", b =>
-                {
-                    b.Property<int>("AdminID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdminID"), 1L, 1);
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageURL")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LongDesc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNum")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShortDesc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("AdminID");
-
-                    b.ToTable("Admins");
-                });
-
             modelBuilder.Entity("EntityLayer.Concrete.AppRole", b =>
                 {
                     b.Property<int>("Id")
@@ -362,37 +309,6 @@ namespace DataAccessLayer.Migrations
                     b.HasKey("ContactID");
 
                     b.ToTable("Contacts");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.Message", b =>
-                {
-                    b.Property<int>("MessageId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MessageId"), 1L, 1);
-
-                    b.Property<string>("MessageContext")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("MessageDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("MessageReceiver")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MessageSender")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("MessageStatus")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("MessageSubject")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MessageId");
-
-                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Message2", b =>

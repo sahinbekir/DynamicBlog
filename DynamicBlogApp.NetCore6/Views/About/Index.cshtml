@@ -19,20 +19,22 @@
 				<!--left-->
 				<div class="col-lg-8 left-blog-info-w3layouts-agileits text-left">
 					<div class="blog-grid-top">
-
+						@foreach (var item in Model)
+						{
 						<div class="blog_info_left_grid">
 							<a href="">
-								<img src="~/DynamicBlog/images/b5.jpg" class="img-fluid" alt="">
+								<img src="@item.AboutImage2" class="img-fluid" alt="">
 							</a>
 						</div>
 						<h3>
-							Amet consectetur adipisicing
+							@item.AboutDetails1
 						</h3>
-						@foreach( var item in Model){
-							<p>@item.AboutDetails1</p>
-						}
 						
-						<a href="" class="btn btn-primary read-m">Read More</a>
+							<p>@item.AboutDetails2</p>
+						
+						
+						<a href="/Contact/Index/" class="btn btn-primary read-m">Read More</a>
+						}
 					</div>
 					
 				</div>
