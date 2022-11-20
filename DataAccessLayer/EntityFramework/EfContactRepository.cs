@@ -1,6 +1,8 @@
 ﻿using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Repositories;
 using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +13,13 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfContactRepository : GenericRepository<Contact>, IContactDal
     {
+        public List<Contact> GetCommentsForAdmin()
+        {
+            using (var c = new Context())
+            {
+                return c.Contacts.Include(x => x.ContactID).ToList();
+
+            }
+        }
     }
 }

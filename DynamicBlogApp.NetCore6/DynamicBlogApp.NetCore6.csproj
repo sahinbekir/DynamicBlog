@@ -53,6 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\403forbidden\README.markdown" />
     <None Include="wwwroot\Admin\css\bootstrap.css.map" />
     <None Include="wwwroot\Admin\css\bootstrap.min.css.map" />
     <None Include="wwwroot\Admin\css\plugins\blueimp\img\error.svg" />

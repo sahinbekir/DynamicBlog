@@ -3,12 +3,14 @@ using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using DocumentFormat.OpenXml.Spreadsheet;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DynamicBlogApp.NetCore6.Controllers
 {
+    [Authorize(Roles = "Writer")]
     public class MessageController : Controller
     {
         Message2Manager m2m = new Message2Manager(new EfMessage2Repository());

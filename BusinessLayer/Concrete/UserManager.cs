@@ -24,7 +24,12 @@ namespace BusinessLayer.Concrete
 
         public List<AppUser> GetListAll()
         {
-            throw new NotImplementedException();
+            return _userDal.GetListAll();
+        }
+
+        public List<AppUser> GetWriterById(int id)
+        {
+            return _userDal.GetListAll(x => x.Id == id);
         }
 
         public void TAdd(AppUser t)

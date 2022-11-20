@@ -12,20 +12,17 @@
     <tr>
         <th> # </th>
         <th> Category Name </th>
-        <th> Do Activate </th>
-        <th> Do Passive </th>
-        <th> Design </th>
+        <th> Update </th>
+        <th> Delete </th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
             <th>@item.CategoryID</th>
             <td>@item.CategoryName</td>
-            <td><a href="#" class="btn btn-warning">Active</a></td>
-            <td><a href="#" class="btn btn-danger">Passive</a></td>
-            <td><a href="#" class="btn btn-success">Design</a></td>
+            <td><a href="/Admin/Category/CategoryChange/@item.CategoryID/"  class="btn btn-warning">Update</a></td>
             <td><a href="/Admin/Category/CategoryDelete/@item.CategoryID/" id="DeleteBtn"
-                onclick="return confirm('Are You Sure');" class="btn btn-success">Delete</a></td>
+                onclick="return confirm('Are You Sure');" class="btn btn-danger">Delete</a></td>
         </tr>
     }
 </table>

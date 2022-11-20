@@ -2,7 +2,9 @@
 {
     public class BlogModel
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
+        public int BlogId { get; set; }
+        public string BlogName { get; set; }
+        public int WriterId { get; set; }
+        public string WriterName { get; set; }
     }
 }

@@ -40,7 +40,6 @@ namespace DataAccessLayer.Concrete
         public DbSet<BlogRaiting>? BlogRaitings { get; set; }
         public DbSet<Notification>? Notifications { get; set; }
         public DbSet<Message2>? Message2s { get; set; }
-        public DbSet<Admin>? Admins { get; set; }
 
     }
     // Migration Commands

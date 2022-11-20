@@ -1,0 +1,27 @@
+﻿@using EntityLayer.Concrete
+@model List<Notification>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1 style="text-align:center;"><b>All Notifications</b></h1>
+<table class="table table-bordered">
+    <tr>
+        <th> # </th>
+        <th> Notification </th>
+        <th> Date </th>
+        <th> Delete </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.NotificationID</td>
+            <td>@item.NotificationDetails</td>
+            <td>@item.NotificationDate.ToShortDateString()</td>
+            <td><a href="/Admin/Notification/DeleteNotification/@item.NotificationID" class="btn btn-danger">Delete</a></td>
+        </tr>
+    }
+</table>
+<a href="/Admin/Notification/CreateNotification/" class="btn btn-primary">Create A Notification</a>
+

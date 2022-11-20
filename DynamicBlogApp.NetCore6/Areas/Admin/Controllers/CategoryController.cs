@@ -7,13 +7,21 @@ using Microsoft.AspNetCore.Mvc;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using X.PagedList;
+using DocumentFormat.OpenXml.Office2010.Excel;
+using DynamicBlogApp.NetCore6.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DynamicBlogApp.NetCore6.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class CategoryController : Controller
     {
+        
         CategoryManager cm = new CategoryManager(new EfCategoriesRepository());
+        
+
         public IActionResult Index(int page = 1)
         {
             var values = cm.GetListAll().ToPagedList(page,3);
@@ -45,11 +53,19 @@ namespace DynamicBlogApp.NetCore6.Areas.Admin.Controllers
             }
             return View();
         }
+        [HttpGet]
         public IActionResult CategoryChange(int id)
         {
-            var value = cm.GetById(id);
-            cm.TUpdate(value);
-            return RedirectToAction("Index", "Category");
+            var values = cm.GetById(id);
+            
+            
+            return View(values);
+        }
+        [HttpPost]
+        public IActionResult CategoryChange(Category p)
+        {
+            cm.TUpdate(p);
+            return RedirectToAction("Index");
         }
         public IActionResult CategoryDelete(int id)
         {

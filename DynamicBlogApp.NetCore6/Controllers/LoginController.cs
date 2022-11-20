@@ -14,9 +14,13 @@ namespace DynamicBlogApp.NetCore6.Controllers
     public class LoginController : Controller
     {
         private readonly SignInManager<AppUser> _signInManager;
-        public LoginController(SignInManager<AppUser> signInManager)
+        private readonly UserManager<AppUser> _userManager;
+        private readonly RoleManager<AppRole> _roleManager;
+        public LoginController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, RoleManager<AppRole> roleManager)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         public IActionResult Index()
@@ -31,7 +35,16 @@ namespace DynamicBlogApp.NetCore6.Controllers
                 var result = await _signInManager.PasswordSignInAsync(p.UserName, p.Password, false, true);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Dashboard");
+                    var a = p.UserName;
+                    // You can try add AppUserRoleTable with UserRole and you can true control for login...
+                    if(a=="bekirsahin")
+                    {
+                        return RedirectToAction("Widget", "Admin");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Dashboard");
+                    }
                 }
                 else
                 {
@@ -45,7 +58,10 @@ namespace DynamicBlogApp.NetCore6.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Login");
         }
-
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
         /*[HttpPost]
         public IActionResult Index(Writer p)
         {

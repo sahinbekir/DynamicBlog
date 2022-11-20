@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace DynamicBlogApp.NetCore6.Controllers
 {
+    [Authorize(Roles = "Writer")]
     public class BlogController : Controller
     {
         BlogManager bm = new BlogManager(new EfBlogRepository());

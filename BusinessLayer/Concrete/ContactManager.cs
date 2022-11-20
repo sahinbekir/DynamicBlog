@@ -21,5 +21,10 @@ namespace BusinessLayer.Concrete
 		{
 			_contactDal.Insert(contact);
 		}
-	}
+
+        public List<Contact> GetListAll()
+        {
+            return _contactDal.GetListAll();
+        }
+    }
 }

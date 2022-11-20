@@ -1,0 +1,90 @@
+﻿@model EntityLayer.Concrete.Notification
+
+@{
+    ViewData["Title"] = "CreateNotification";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+
+
+<body>
+
+    <div class="row border-bottom">
+    </div>
+
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            
+
+            <div class="col-lg-12 animated fadeInRight">
+                <form method="post">
+                    <div class="mail-box-header">
+                        <div class="float-right tooltip-demo">
+                            <a href="#" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> Draft</a>
+                            <a href="/Admin/Notification/Index/" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Discard Notification"><i class="fa fa-times"></i> Discard</a>
+                        </div>
+                        <h2>
+                            Create A Notification
+                        </h2>
+                    </div>
+                    <div class="mail-box">
+
+
+                        <div class="mail-body">
+
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Type:</label>
+
+                                <div class="col-sm-10"><input type="text" class="form-control" name="NotificationType" placeholder="NotificationType" /></div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Symbol:</label>
+
+                                <div class="col-sm-10"><input type="text" class="form-control" name="NotificationTypeSymbol" placeholder="NotificationTypeSymbol" /></div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Color:</label>
+
+                                <div class="col-sm-10"><input type="text" class="form-control" name="NotificationColor" placeholder="NotificationColor" /></div>
+                            </div>
+                            
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Detail:</label>
+                                <br />
+                                <div class="col-sm-12">
+                                    <textarea type="text" class="form-control" name="NotificationDetails" rows="4" placeholder="Write your notification here..."></textarea>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="mail-body text-right tooltip-demo">
+                        <button class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Send"><i class="fa fa-reply"></i> Share</button>
+                    </div>
+                </form>
+                <div class="clearfix"></div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+</body>
+
+
+
+
+

@@ -1,12 +1,23 @@
-﻿using DynamicBlogApp.NetCore6.Areas.Admin.Models;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
+using DynamicBlogApp.NetCore6.Areas.Admin.Models;
+using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace DynamicBlogApp.NetCore6.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class WriterController : Controller
     {
+        UserManager _userManager = new UserManager(new EfUserRepository());
+        public IActionResult AllWriters()
+        {
+            var values = _userManager.GetListAll();
+            return View(values);
+        }
         public IActionResult Index()
         {
             return View();

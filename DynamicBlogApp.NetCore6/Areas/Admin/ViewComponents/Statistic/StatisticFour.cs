@@ -8,13 +8,15 @@ namespace DynamicBlogApp.NetCore6.Areas.Admin.ViewComponents.Statistic
         Context context = new Context();
         public IViewComponentResult Invoke()
         {
-            ViewBag.v1 = context.Admins.Where(x=>x.AdminID==1).Select(y => y.Name).FirstOrDefault();
-            ViewBag.v2 = context.Admins.Where(x => x.AdminID == 1).Select(y => y.ShortDesc).FirstOrDefault();
-            ViewBag.v3 = context.Admins.Where(x => x.AdminID == 1).Select(y => y.ImageURL).FirstOrDefault();
-            ViewBag.v4 = context.Admins.Where(x => x.AdminID == 1).Select(y => y.LongDesc).FirstOrDefault();
-            ViewBag.v5 = context.Admins.Where(x => x.AdminID == 1).Select(y => y.Email).FirstOrDefault();
-            ViewBag.v6 = context.Admins.Where(x => x.AdminID == 1).Select(y => y.Address).FirstOrDefault();
-            ViewBag.v7 = context.Admins.Where(x => x.AdminID == 1).Select(y => y.PhoneNum).FirstOrDefault();
+            var username = User.Identity.Name;
+            var adminid=context.Users.Where(x=> x.UserName == username).Select(y=>y.Id).FirstOrDefault();
+            ViewBag.v1 = context.Users.Where(x=>x.Id== adminid).Select(y => y.NameSurname).FirstOrDefault();
+            ViewBag.v2 = context.Users.Where(x => x.Id == adminid).Select(y => y.UserName).FirstOrDefault();
+            ViewBag.v3 = context.Users.Where(x => x.Id == adminid).Select(y => y.ImageUrl).FirstOrDefault();
+            ViewBag.v4 = context.Users.Where(x => x.Id == adminid).Select(y => y.NameSurname).FirstOrDefault();
+            ViewBag.v5 = context.Users.Where(x => x.Id == adminid).Select(y => y.Email).FirstOrDefault();
+            ViewBag.v6 = context.Users.Where(x => x.Id == adminid).Select(y => y.UserName).FirstOrDefault();
+            ViewBag.v7 = context.Users.Where(x => x.Id == adminid).Select(y => y.PhoneNumber).FirstOrDefault();
 
             return View();
         }

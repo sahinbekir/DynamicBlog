@@ -21,9 +21,9 @@
         $(function() {
             $.ajax({
                 type: 'GET',
-                url: '/Admin/Chart/CategoryChartTest/',
+                url: '/Admin/Chart/CategoryChart/',
                 success: function (chartsdata) {
-                    var Data = chartsdata.charttest;
+                    var Data = chartsdata.chart;
                     var data = new google.visualization.DataTable();
 
                     data.addColumn('string', 'categoryname');

@@ -9,7 +9,7 @@ namespace DynamicBlogApp.NetCore6.ViewComponents.Writer
 {
     public class WriterAboutOnDashboard:ViewComponent
     {
-        WriterManager wm = new WriterManager(new EfWriterRepository());
+        UserManager um = new UserManager(new EfUserRepository());
         private readonly UserManager<AppUser> _userManager;
         public WriterAboutOnDashboard( UserManager<AppUser> userManager)
         {
@@ -22,10 +22,10 @@ namespace DynamicBlogApp.NetCore6.ViewComponents.Writer
             //var user = await _userManager.FindByNameAsync(User.Identity.Name);
             ViewBag.v1 = username;
             Context c = new Context();
-            var useremail = c.Users.Where(x => x.UserName == username).Select(y => y.Email).FirstOrDefault();
-            var writerid = c.Writers.Where(x => x.WriterEmail == useremail).Select(y => y.WriterID).FirstOrDefault();
-
-            var values = wm.GetWriterById(writerid);
+            var writerid = c.Users.Where(x => x.UserName == username).Select(y => y.Id).FirstOrDefault();
+            //var writerid = c.Writers.Where(x => x.WriterEmail == useremail).Select(y => y.WriterID).FirstOrDefault();
+            
+            var values = um.GetWriterById(writerid);
             return View(values);
         }
     }

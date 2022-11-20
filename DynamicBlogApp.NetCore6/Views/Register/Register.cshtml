@@ -1,4 +1,4 @@
-﻿@model EntityLayer.Concrete.Writer
+﻿@model UserSignUpViewModel
 @{
     ViewData["Title"] = "Register";
     Layout = "~/Views/Shared/UserLayout.cshtml";
@@ -19,46 +19,39 @@
 						<div class="form-row">
 								<div class="col-md-6 mb-3">
 										<label for="validationCustom01">First and Last name</label>
-										@Html.TextBoxFor(x=>x.WriterName, new { @class = "form-control"})
-										@Html.ValidationMessageFor(x=>x.WriterName, "", new { @class = "text-danger" })
+										@Html.TextBoxFor(x=>x.NameSurname, new { @class = "form-control"})
 									@*<input type="text" class="form-control" id="validationDefault01" name="WriterName" placeholder="" required="">*@
 								</div>
 								<div class="col-md-6 mb-3">
 										<label for="validationCustom02">Email</label>
-										@Html.TextBoxFor(x=>x.WriterEmail, new { @class = "form-control"})
-										@Html.ValidationMessageFor(x=>x.WriterEmail, "", new { @class = "text-danger" })
+										@Html.TextBoxFor(x=>x.Email, new { @class = "form-control"})
 								</div>
 						</div>
 						<div class="form-row">
 								<div class="col-md-6 mb-3">
-										<label for="validationCustom01">Writer About</label>
-										@Html.TextBoxFor(x=>x.WriterAbout, new { @class = "form-control"})
-										@Html.ValidationMessageFor(x=>x.WriterAbout, "", new { @class = "text-danger" })
+										<label for="validationCustom01">Writer Phone</label>
+										@Html.TextBoxFor(x=>x.PhoneNumber, new { @class = "form-control"})
 								</div>
 								<div class="col-md-6 mb-3">
-										<label for="validationCustom02">WriterImage</label>
-										@Html.TextBoxFor(x=>x.WriterImage, new { @class = "form-control"})
-										@Html.ValidationMessageFor(x=>x.WriterImage, "", new { @class = "text-danger" })
+										<label for="validationCustom02">Writer Image</label>
+										@Html.TextBoxFor(x=>x.ImageUrl, new { @class = "form-control"})
 								</div>
 						</div>
 						<div class="form-row">
 							<div class="col-md-6 mb-3">
-										<label for="validationCustom02">WriterStatus</label>
-										@Html.TextBoxFor(x=>x.WriterStatus, new { @class = "form-control"})
-										@Html.ValidationMessageFor(x=>x.WriterStatus, "", new { @class = "text-danger" })
+										<label for="validationCustom02">Username</label>
+										@Html.TextBoxFor(x=>x.UserName, new { @class = "form-control"})
 							</div>
 						</div>
 							<div class="form-row">
 								<div class="form-group col-md-6">
 								
 									<label for="exampleInputPassword1 mb-2">Password</label>
-									@Html.PasswordFor(x=>x.WriterPassword, new { @class = "form-control"})
-									@Html.ValidationMessageFor(x=>x.WriterPassword, "", new { @class = "text-danger" })
+									@Html.PasswordFor(x=>x.Password, new { @class = "form-control"})
 								</div>
 								<div class="form-group col-md-6">
 										<label for="exampleInputPassword2 mb-2">Confirm Password</label>
-										@Html.PasswordFor(x=>x.WriterPassword, new { @class = "form-control"})
-										@Html.ValidationMessageFor(x=>x.WriterPassword, "", new { @class = "text-danger" })
+										@Html.PasswordFor(x=>x.ConfirmPassword, new { @class = "form-control"})
 								</div>
 								
 							</div>

@@ -14,10 +14,11 @@ using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace DynamicBlogApp.NetCore6.Controllers
 {
+    [Authorize(Roles = "Writer")]
     public class WriterController : Controller
     {
 
-        WriterManager wm = new WriterManager(new EfWriterRepository());
+        
         private readonly UserManager<AppUser> _userManager;
         Context c = new Context();
         public WriterController(UserManager<AppUser> userManager)
@@ -51,7 +52,6 @@ namespace DynamicBlogApp.NetCore6.Controllers
             model.phone = user.PhoneNumber;
             model.email = user.Email;
             model.un = user.UserName;
-            //model.password = user.PasswordHash;
             model.img = user.ImageUrl;
             return View(model);
         }
@@ -59,16 +59,33 @@ namespace DynamicBlogApp.NetCore6.Controllers
         public async Task<IActionResult> WriterEditProfile(UserUpdateViewModel model)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            //UserUpdateViewModel model = new UserUpdateViewModel();
+            var danger = false;
+            if (user.UserName != model.un)
+            {
+                danger = true;
+            }
             user.NameSurname = model.ns;
             user.PhoneNumber = model.phone;
             user.Email = model.email;
             user.UserName = model.un;
+            
+            
             user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, model.pass);
             //user.PasswordHash = model.password;
-            user.ImageUrl = model.img;
+
+            if (model.img!=null)
+            {
+                user.ImageUrl = model.img;
+            }
             var result = await _userManager.UpdateAsync(user);
-            return RedirectToAction("Index", "Dashboard");
+            if (danger == true)
+            {
+                return RedirectToAction("LogOut", "Login");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
 
            
             /*
@@ -90,8 +107,9 @@ namespace DynamicBlogApp.NetCore6.Controllers
 			return View();*/
 
         }
+        //WriterManager wm = new WriterManager(new EfWriterRepository());
         // SADECE PROTOTİP, FOTOGRAF EKLEME ÖRNEĞİ İÇİN.
-        [HttpGet]
+        /*[HttpGet]
         public IActionResult WriterAdd()
         {
             return View();
@@ -117,6 +135,6 @@ namespace DynamicBlogApp.NetCore6.Controllers
             w.WriterStatus = true;
             wm.TAdd(w);
             return RedirectToAction("Index", "Dashboard");
-        }
+        }*/
     }
 }
